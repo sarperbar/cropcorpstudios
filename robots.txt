@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+
+Sitemap: https://cropcorpstudios.com.tr/sitemap.xml
