@@ -1,0 +1,217 @@
+
+
+/* --- 1. DEĞİŞKENLER VE GLOBAL SIFIRLAMA --- */
+:root {
+    --main-color: #39FF14;      
+    --vurgu: #FF8C00;  
+    --text-gray: #bbb;          /* Genel Okuma Rengi */
+    --glass-bg: rgba(10, 25, 10, 0.4); /* Glassmorphism Arka Planı */
+}
+/* Global Sıfırlama */
+body {
+    background: linear-gradient(135deg, #060a06 0%, #0c140c 100%);
+    background-color: var(--deep-space);
+    color: var(--text-gray);
+    font-family: 'JetBrains Mono', monospace; 
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+/* Özelleştirilmiş Kaydırma Çubuğu */
+body::-webkit-scrollbar { width: 8px; background: #000; }
+body::-webkit-scrollbar-thumb { 
+    background: var(--main-color); 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px var(--main-color); 
+}
+
+/* --- Arka Plan Parçacıkları --- */
+#particles-js {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* --- 2. TİPOGRAFİ VE METİN STİLLERİ --- */
+h1, h2, h3, h4 { 
+    font-family: 'Orbitron', sans-serif; 
+    font-weight: 700; 
+    color: #fff; 
+    position: relative;
+    z-index: 5;
+}
+
+/* Başlık Altı Turuncu Çizgi Efekti */
+h2 {
+    font-size: 24px;
+    border-left: 4px solid var(--vurgu);
+    padding-left: 15px;
+    background: linear-gradient(90deg, rgba(255, 140, 0, 0.1) 0%, transparent 100%);
+    margin-top: 50px;
+    letter-spacing: 2px;
+}
+
+/* Parçacıklar Üzerinde Okunabilirlik İçin Metin Gölgeleri */
+p, .lead {
+    color: #ffffff !important;
+    font-weight: 400;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 5;
+}
+
+/* Dinamik Vurgu Renkleri */
+.highlight-green { color: var(--main-color); font-weight: 700; text-shadow: 0 0 8px rgba(57, 255, 20, 0.4); }
+.highlight-orange, .highlight { color: var(--vurgu); font-weight: 700; text-shadow: 0 0 8px rgba(255, 140, 0, 0.4); }
+
+/* --- 3. LOGO VE BRANDING --- */
+.logo-section { padding: 60px 0; text-align: center; }
+
+.main-studio-logo {
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.3);
+    transition: all 0.5s ease;
+    image-rendering: pixelated; /* Logo keskinliğini korur */
+}
+
+.main-logo-container:hover .main-studio-logo {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(57, 255, 20, 0.4);
+}
+
+.slogan {
+    font-family: 'Orbitron', sans-serif;
+    color: #f1966a !important;
+    letter-spacing: 4px;
+    font-size: 14px;
+    animation: flicker 2s infinite;
+}
+
+/* --- 4. ABOUT US (GLASSMORPHISM PANEL) --- */
+.about-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(57, 255, 20, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 40px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Başlığı ve GIF'i ortalar */
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p { line-height: 1.8; margin-bottom: 15px; }
+
+/* GIF Konteynırı ve Pixel Art Ayarları */
+.pixel-grow-container {
+    width: 60px; height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(57, 255, 20, 0.05);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 8px;
+}
+
+.pixel-grow-gif { width: 100%; image-rendering: pixelated; filter: drop-shadow(0 0 5px var(--main-color)); }
+
+/* --- 5. OYUN KARTLARI (GAME CARDS) --- */
+.game-card {
+    background: rgba(15, 25, 15, 0.85); /* Daha opak, okunabilir arka plan */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(57, 255, 20, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.game-card:hover { transform: translateY(-10px); border-color: var(--main-color); box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); }
+
+/* Oyun Kapak Görseli Ayarları */
+.game-cover-container {
+    width: 100%;
+    max-width: 350px;
+    height: 200px; 
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin: 0 auto;
+}
+
+.game-img {
+    width: 100%; height: 100%;
+    display: block;
+    object-fit: cover; 
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+/* Market Rozetleri (Badges) */
+.platform-badges { display: flex; align-items: center; gap: 12px; margin-top: 20px; justify-content: center; }
+
+.badge-link img {
+    height: 38px; width: auto; border-radius: 5px; background: #000;
+    padding: 2px; border: 1px solid rgba(57, 255, 20, 0.2); transition: 0.3s;
+}
+
+.badge-link:hover img { border-color: var(--main-color); box-shadow: 0 0 10px rgba(57, 255, 20, 0.5); transform: translateY(-2px); }
+
+/* --- 6. NAVİGASYON VE ETKİLEŞİM --- */
+.side-links {
+    position: fixed;
+    right: 0; top: 25%;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid var(--main-color);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    padding: 15px 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 60px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.side-links a img, .social-icon {
+    width: 32px !important; height: 32px !important;
+    object-fit: contain;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 0 2px rgba(57, 255, 20, 0.2));
+}
+
+.side-links a:hover img { transform: scale(1.2); filter: drop-shadow(0 0 8px var(--main-color)); }
+
+/* Siber Buton Stili */
+.btn-cyber {
+    display: inline-block; padding: 12px 25px; margin-top: 20px;
+    border: 1px solid var(--main-color); color: var(--main-color);
+    text-transform: uppercase; font-weight: bold; transition: 0.3s; text-decoration: none !important;
+}
+
+.btn-cyber:hover { background: var(--main-color); color: #000; box-shadow: 0 0 20px var(--main-color); }
+
+/* --- 7. ANİMASYONLAR VE FOOTER --- */
+@keyframes flicker { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; } }
+
+footer { text-align: center; padding: 80px 0 40px; font-size: 12px; opacity: 0.6; }
