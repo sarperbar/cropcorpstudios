@@ -4,7 +4,7 @@ const studioConfig = {
     // Sosyal Medya ve İletişim
     social: {
         youtube: "https://www.youtube.com/@CropCorp.Studios",
-        email: "cropcorpstudios@gmail.com",
+        email: "help@cropcorpstudios.com.tr",
         twitter: "#",   
         linkedin: "https://www.linkedin.com/company/crop-corp-studios"   
     },
@@ -14,4 +14,5 @@ const studioConfig = {
         googlePlay: "#",
         appStore: "#"
     }
+
 };
