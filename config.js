@@ -12,7 +12,7 @@ const studioConfig = {
     // Oyun Linkleri
     cropCollection: {
         googlePlay: "#",
-        appStore: "#"
+        appStore: "https://apps.apple.com/us/app/crop-collection/id6760541927"
     }
 
 };
