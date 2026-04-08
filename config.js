@@ -5,7 +5,7 @@ const studioConfig = {
     social: {
         youtube: "https://www.youtube.com/@CropCorp.Studios",
         email: "help@cropcorpstudios.com.tr",
-        twitter: "#",   
+        instagram: "https://www.instagram.com/cropcorpstudios/",   
         linkedin: "https://www.linkedin.com/company/crop-corp-studios"   
     },
     
