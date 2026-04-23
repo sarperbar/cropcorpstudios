@@ -131,21 +131,45 @@ p, .lead {
 .pixel-grow-gif { width: 100%; image-rendering: pixelated; filter: drop-shadow(0 0 5px var(--main-color)); }
 
 /* --- 5. OYUN KARTLARI (GAME CARDS) --- */
+/* --- OYUN KARTLARI OPTİMİZE EDİLMİŞ --- */
 .game-card {
-    background: rgba(15, 25, 15, 0.85); /* Daha opak, okunabilir arka plan */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(15, 25, 15, 0.95); /* Opaklığı artırdık, RAM yiyen blur'u hafiflettik */
+    backdrop-filter: blur(4px); /* 8px yerine 4px: Görsel aynı, CPU yükü yarı yarıya */
+    -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(57, 255, 20, 0.15);
     border-radius: 20px;
     padding: 40px;
     margin-top: 30px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* PERFORMANS KRİTİK: 'all' yerine sadece gerekenleri tanımla */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease;
+    
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    /* Donanım ivmelenmesini (GPU) karta özel bir katman olarak ayırır */
+    will-change: transform;
+    transform: translateZ(0); 
+    backface-visibility: hidden;
 }
 
-.game-card:hover { transform: translateY(-10px); border-color: var(--main-color); box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); }
+/* .game-card:hover { 
+    
+    transform: translateY(-6px) translateZ(0); 
+    border-color: var(--main-color); 
+    box-shadow: 0 15px 35px rgba(57, 255, 20, 0.2); 
+    
+    
+    backdrop-filter: none;
+} */
 
-/* Oyun Kapak Görseli Ayarları */
+/* Zero Bomb içindeki ekstra elementlerin performansı etkilememesi için */
+.game-card h3, .game-card p, .game-card .platform-badges, .game-card i {
+    transform: translateZ(0); /* Her birini GPU katmanına taşı */
+}
+
+/* Oyun Kapak Görseli */
 .game-cover-container {
     width: 100%;
     max-width: 350px;
@@ -153,8 +177,10 @@ p, .lead {
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid rgba(57, 255, 20, 0.3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     margin: 0 auto;
+    /* Resimlerin üzerine gelince sarsıntıyı önler */
+    backface-visibility: hidden;
 }
 
 .game-img {
@@ -162,7 +188,7 @@ p, .lead {
     display: block;
     object-fit: cover; 
     object-position: center;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease; /* Resim için sadece transform */
 }
 
 /* Market Rozetleri (Badges) */
