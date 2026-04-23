@@ -11,8 +11,13 @@ const studioConfig = {
     
     // Oyun Linkleri
     cropCollection: {
-        googlePlay: "https://play.google.com/store/apps/details?id=com.cropcorp.cropcollectiongame",
-        appStore: "https://apps.apple.com/us/app/crop-collection/id6760541927"
+        CCgooglePlay: "https://play.google.com/store/apps/details?id=com.cropcorp.cropcollectiongame",
+        CCappStore: "https://apps.apple.com/us/app/crop-collection/id6760541927"
+    },
+
+        ZeroBomb: {
+        ZBgooglePlay: "#",
+        appStore: "#"
     }
 
 };
